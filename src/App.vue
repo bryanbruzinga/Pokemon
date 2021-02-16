@@ -1,28 +1,64 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <p>{{dados.id}}</p>
+      <img :src="dados.sprites.front_default" :alt="dados.name">
+      <p>{{dados.name}}</p>
+      <p>{{dados.types}}</p>      
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      dados: {}
+    }
+  },
+  methods: {
+    puxarApi() {
+      fetch('https://pokeapi.co/api/v2/pokemon/1')
+      .then(r => r.json())
+      .then(json => {
+        this.dados = json
+      })
+    }
+  },
+  created() {
+    this.puxarApi()
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+* {
+  box-sizing: border-box;
 }
+body,
+ul,
+li,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+body {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  color: #345;
+}
+a {
+  color: #345;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
 </style>
