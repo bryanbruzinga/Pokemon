@@ -1,34 +1,20 @@
 <template>
   <div id="app">
-      <p>{{dados.id}}</p>
-      <img :src="dados.sprites.front_default" :alt="dados.name">
-      <p>{{dados.name}}</p>
-      <p>{{dados.types}}</p>      
+        <Pokemon />
   </div>
 </template>
 
 <script>
 
+import Pokemon from "@/components/Pokemon.vue"
+
 export default {
   name: 'App',
-  data() {
-    return {
-      dados: {}
-    }
-  },
-  methods: {
-    puxarApi() {
-      fetch('https://pokeapi.co/api/v2/pokemon/1')
-      .then(r => r.json())
-      .then(json => {
-        this.dados = json
-      })
-    }
-  },
-  created() {
-    this.puxarApi()
+  components: {
+    Pokemon
   }
 }
+
 </script>
 
 <style>
@@ -57,7 +43,8 @@ a {
   text-decoration: none;
 }
 img {
-  max-width: 100%;
+  height: 100px;
+  width: 100px;
   display: block;
 }
 
