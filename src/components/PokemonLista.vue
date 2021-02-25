@@ -1,13 +1,11 @@
 <template>
-  <div class="container">
-    <section class="pokemon" v-for="(pokemon, index) in pokemons" :key="'poke' + index" @click="puxarPokemon(pokemon.url)">
-        <h3>{{pokemon.name}}</h3>
-        <img class="pokeImg" :src="imgUrl + pokemon.id + '.png'" :alt="pokemon.name">
-    </section>
-    <div id="scrollAtivar" ref="infinitescrolltrigger">
-
+    <div class="container">
+      <section class="pokemon" v-for="(pokemon, index) in pokemons" :key="'poke' + index" @click="puxarPokemon(pokemon.url)">
+          <h3>{{pokemon.name}}</h3>
+          <img class="pokeImg" :src="imgUrl + pokemon.id + '.png'" :alt="pokemon.name">
+      </section>
+      <div id="scrollAtivar" ref="infinitescrolltrigger"></div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -78,7 +76,17 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  justify-content: center
+  justify-content: center;  
+}
+
+.background {
+  background: url('../assets/background.jpeg');
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  opacity: .4;
 }
 
 .pokemon {
@@ -86,9 +94,15 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 400px;
-  margin-bottom: 40px;
+  margin: 2.5rem;
   cursor: pointer;
+  box-shadow: 5px 5px 15px rgba(0,0,0, .5);
+  padding: 2rem;
+  transition: all .4s;
+}
+
+.pokemon:hover {
+  transform: scale(1.1);
 }
 
 </style>

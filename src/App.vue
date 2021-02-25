@@ -21,6 +21,7 @@ export default {
 
 * {
   box-sizing: border-box;
+  text-transform: capitalize;
 }
 body,
 ul,
