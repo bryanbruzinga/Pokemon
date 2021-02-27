@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1><img src='https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg' alt="Pokemon"></h1>
     <PokemonBusca />
     <PokemonLista :imgUrl="imgUrl" :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
     <PokemonDetalhes v-if="mostrarDetalhes" :pokemonUrl="pokemonUrl" :imgUrl="imgUrl" @fecharDetalhes="fecharDetalhes"/>
@@ -42,13 +41,6 @@ export default {
 
 </script>
 
-<style scoped>
-
-img {
-  display: block;
-  height: 200px;
-  width: 200px;
-  margin: 0 auto;
-}
+<style>
 
 </style>

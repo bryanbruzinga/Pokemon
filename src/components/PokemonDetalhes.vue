@@ -89,6 +89,7 @@ export default {
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.7);
+  animation: show-up .8s;
 }
 .detalhes-view {
   display: flex;
@@ -100,7 +101,6 @@ export default {
   max-width: 500px;
   padding: 50px 0 0;
   background-color: #fff;
-  border-radius: 5px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -178,5 +178,13 @@ h3 {
 .fechar:hover {
   background-color: #3B5CA7;
   color: #FFCB05;
+}
+
+@keyframes show-up {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
 }
 </style>

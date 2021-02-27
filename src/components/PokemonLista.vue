@@ -76,17 +76,8 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  justify-content: center;  
-}
-
-.background {
-  background: url('../assets/background.jpeg');
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  z-index: -1;
-  opacity: .4;
+  justify-content: center;
+  padding-top: 5rem;
 }
 
 .pokemon {
@@ -98,11 +89,38 @@ export default {
   cursor: pointer;
   box-shadow: 5px 5px 15px rgba(0,0,0, .5);
   padding: 2rem;
-  transition: all .4s;
+  background: rgba(255, 255, 255, .8);
+  border-radius: 20px;
 }
 
-.pokemon:hover {
-  transform: scale(1.1);
+.pokemon h3 {
+  font-size: 2rem;
+}
+
+.pokemon img {
+  height: 180px;
+  width: 180px;
+  transition: all .5s;
+}
+
+.pokemon img:hover {
+  transform: scale(1.4);  
+}
+
+@media (max-width: 960px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 645px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .pokemon img {
+    height: 140px;
+    width: 140px;
+  }
 }
 
 </style>

@@ -38,6 +38,7 @@ ul {
 body {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   color: #345;
+  background: url('./assets/background.jpeg');
 }
 a {
   color: #345;
