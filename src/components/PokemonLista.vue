@@ -12,7 +12,8 @@
 export default {
   props: [
     'imgUrl',
-    'apiUrl'
+    'apiUrl',
+    'loading'
   ],
   data() {
     return {
@@ -23,6 +24,7 @@ export default {
   },
   methods: {
     puxarDados() {
+      this.loading = true;
       fetch(this.currentUrl)
       .then(r => {
         if(r.status === 200)
@@ -36,6 +38,7 @@ export default {
             return !!part
           }).pop();
           this.pokemons.push(pokemon);
+          this.loading = false;
         })
       })
       .catch((error) => {

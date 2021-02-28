@@ -1,7 +1,8 @@
 <template>
   <div>
-    <PokemonBusca />
-    <PokemonLista :imgUrl="imgUrl" :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
+    <PokemonBusca/>
+    <Loading v-if="loading"/>
+    <PokemonLista :loading="loading" :imgUrl="imgUrl" :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
     <PokemonDetalhes v-if="mostrarDetalhes" :pokemonUrl="pokemonUrl" :imgUrl="imgUrl" @fecharDetalhes="fecharDetalhes"/>
   </div>
 </template>
@@ -11,6 +12,7 @@
 import PokemonBusca from '@/components/PokemonBusca.vue';
 import PokemonLista from '@/components/PokemonLista.vue';
 import PokemonDetalhes from '@/components/PokemonDetalhes.vue';
+import Loading from '@/components/Loading.vue';
 
 export default {
   name: 'Pokemon',
@@ -19,13 +21,15 @@ export default {
       imgUrl: 'https://pokeres.bastionbot.org/images/pokemon/',
       apiUrl: 'https://pokeapi.co/api/v2/pokemon/',
       pokemonUrl: '',
-      mostrarDetalhes: false
+      mostrarDetalhes: false,
+      loading: false
     }
   },
   components: {
     PokemonBusca,
     PokemonLista,
-    PokemonDetalhes
+    PokemonDetalhes,
+    Loading
   },
   methods: {
     puxarPokemon(url) {
