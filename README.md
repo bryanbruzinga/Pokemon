@@ -1,24 +1,10 @@
-# pokemon
+<h1>Pokedex em Vue JS</h1>
+<h2>🚧 Projeto e ReadMe ainda em construção 🚧</h2>
 
-## Project setup
-```
-npm install
-```
+<p>Um projeto que faz o consumo da Api do Pokemon, construído com Vue Js.</p>
+<p>Mobile Friendly</p>
+<p>A incluir sistema de busca</p>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<p>
+  <a href="https://pokemon-sable.vercel.app/">Link do app.</a>
+</p>
