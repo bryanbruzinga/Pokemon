@@ -85,7 +85,7 @@ input {
   transition: all .2s;
 }
 
-@media (max-width: 535px) {
+@media (max-width: 805px) {
   .container {
     display: flex;
     flex-direction: column;

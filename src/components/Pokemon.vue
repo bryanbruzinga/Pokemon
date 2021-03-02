@@ -2,7 +2,7 @@
   <div>
     <PokemonBusca/>
     <Loading v-if="loading"/>
-    <PokemonLista :loading="loading" :imgUrl="imgUrl" :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
+    <PokemonLista :pokemonUrl="pokemonUrl" :loading="loading" :imgUrl="imgUrl" :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
     <PokemonDetalhes v-if="mostrarDetalhes" :pokemonUrl="pokemonUrl" :imgUrl="imgUrl" @fecharDetalhes="fecharDetalhes"/>
   </div>
 </template>

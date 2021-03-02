@@ -1,8 +1,9 @@
 <template>
     <div class="container">
       <section class="pokemon" v-for="(pokemon, index) in pokemons" :key="'poke' + index" @click="puxarPokemon(pokemon.url)">
-          <h3>{{pokemon.name}}</h3>
           <img class="pokeImg" :src="imgUrl + pokemon.id + '.png'" :alt="pokemon.name">
+          <h3>{{pokemon.name}}</h3>
+          {{console.log(pokemon.url)}}
       </section>
       <div id="scrollAtivar" ref="infinitescrolltrigger"></div>
     </div>
@@ -13,25 +14,26 @@ export default {
   props: [
     'imgUrl',
     'apiUrl',
-    'loading'
+    'loading',
+    'pokemonUrl'
   ],
   data() {
     return {
       pokemons: [],
-      nextUrl: '',
-      currentUrl: ''
+      puxarMaisPokemons: '',
+      urlAtual: ''
     }
   },
   methods: {
     puxarDados() {
       this.loading = true;
-      fetch(this.currentUrl)
+      fetch(this.urlAtual)
       .then(r => {
         if(r.status === 200)
         return r.json();
       })
       .then(data => {
-        this.nextUrl = data.next
+        this.puxarMaisPokemons = data.next
         data.results.forEach(pokemon => {
           pokemon.id = pokemon.url.split('/')
           .filter(part => {
@@ -48,7 +50,7 @@ export default {
     scrollAtivar() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if(entry.intersectionRatio > 0 && this.nextUrl) {
+          if(entry.intersectionRatio > 0 && this.puxarMaisPokemons) {
             this.next()
           }
         });
@@ -56,15 +58,18 @@ export default {
       observer.observe(this.$refs.infinitescrolltrigger);
     },
     next() {
-      this.currentUrl = this.nextUrl;
+      this.urlAtual = this.puxarMaisPokemons;
       this.puxarDados();
     },
     puxarPokemon(url) {
       this.$emit('puxarPokemon', url);
     }
   },
+  computed: {
+    console: () => console
+  },
   created() {
-    this.currentUrl = this.apiUrl;
+    this.urlAtual = this.apiUrl;
     this.puxarDados();    
   },
   mounted() {
@@ -77,7 +82,7 @@ export default {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
 }
@@ -87,26 +92,35 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2.5rem;
+  margin: 2rem;
   cursor: pointer;
   box-shadow: 5px 5px 15px rgba(0,0,0, .5);
   padding: 2rem;
   background: rgba(255, 255, 255, .8);
   border-radius: 20px;
+  max-width: 250px;
+  transition: all .5s;
 }
 
 .pokemon h3 {
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .pokemon img {
   height: 180px;
-  width: 180px;
-  transition: all .5s;
+  width: 180px;  
+  background: white;
+  border-radius: 30px;
 }
 
-.pokemon img:hover {
-  transform: scale(1.4);  
+.pokemon:hover {
+  transform: scale(1.2);  
+}
+
+@media (max-width: 1250px) {
+  .container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 @media (max-width: 960px) {
@@ -117,7 +131,12 @@ export default {
 
 @media (max-width: 645px) {
   .container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .pokemon {
+    width: 100%;
   }
   .pokemon img {
     height: 140px;

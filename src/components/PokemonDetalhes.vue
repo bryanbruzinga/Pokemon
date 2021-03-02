@@ -146,16 +146,16 @@ h3 {
 .habilidades {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   max-width: 400px;
 }
 .tipo,
 .habilidade {
   margin-right: 1rem;
-  padding: 0.5rem;
+  padding: 0.3rem 1.5rem;
   border-radius: 20px;
   color: #fff;
-  font-size: 1.125rem;
+  font-size: 1.3rem;
 }
 .tipo {
   background-color: #0a2e50;
