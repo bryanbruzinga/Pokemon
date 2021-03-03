@@ -110,13 +110,15 @@ export default {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: -60px;
-  width: 100px;
-  height: 100px;
-  background-color: #333;
-  border-radius: 50%;
+  top: -80px;
+  width: 150px;
+  height: 150px;
+  background: none;
   overflow: hidden;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+.imagem img {
+  width: 110px;
+  height: 110px;
 }
 
 h2 {

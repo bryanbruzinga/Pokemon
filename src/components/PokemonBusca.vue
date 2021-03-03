@@ -5,7 +5,7 @@
       <label for="busca">
         <button type="submit" @click="puxarPokemon">🔍</button>
       </label>
-      <input type="text" name="busca" placeholder="Busque um pokemon" v-model="pokemonBuscado">      
+      <input type="text" name="busca" placeholder="Busque um pokemon pelo nome" v-model="pokemonBuscado">      
     </form>
 
   </div>
