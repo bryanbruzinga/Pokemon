@@ -1,36 +1,32 @@
 <template>
   <div class="container">
     <h1><img src='https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg' alt="Pokemon"></h1>
-    <div class="busca">
-      <button @click="buscarPokemon(pokemonBuscado)">🔍</button>
-      <label for="busca"></label>
-      <input type="text" name="busca" placeholder="Digite um Pokemon para buscar..." v-model.lazy="pokemonBuscado">      
-    </div>
-    <div v-if="pokemonEncontrado">
-      {{pokemonEncontrado.name}}
-      <img class="pokeImg" :src="'https://pokeres.bastionbot.org/images/pokemon/' + pokemonBuscado + '.png'" :alt="pokemonEncontrado.name">
-    </div>
+    <form @submit.prevent="puxarPokemon" class="busca">      
+      <label for="busca">
+        <button type="submit" @click="puxarPokemon">🔍</button>
+      </label>
+      <input type="text" name="busca" placeholder="Busque um pokemon" v-model="pokemonBuscado">      
+    </form>
+
   </div>
 </template>
 
 <script>
 export default {
   name: "PokemonBusca",
+  props: [ 'apiUrl'],
   data() {
     return {
-      pokemonBuscado: "",
-      pokemonEncontrado: null
+      pokemonBuscado: '',
     }    
   },
   methods: {
-    buscarPokemon(pokemonBuscado) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonBuscado}`)
-      .then(r => r.json())
-      .then(json => {
-        this.pokemonEncontrado = json
-      })
+    puxarPokemon() {
+      if (this.pokemonBuscado !== '') {
+        this.$emit('puxarPokemon', this.apiUrl + this.pokemonBuscado);
+      }
     }
-  },
+  }
 }
 </script>
 

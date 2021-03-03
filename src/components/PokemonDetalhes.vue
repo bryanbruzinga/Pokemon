@@ -21,9 +21,10 @@
         <h3>Tipo</h3>
         <div class="tipos">
           <div
-            class="tipo"
             v-for="(tipo, index) in pokemon.types"
             :key="'tipo' + index"
+            class=tipo
+            :class=[tipo.type.name]
           >
             <p>{{ tipo.type.name }}</p>
           </div>
@@ -89,7 +90,7 @@ export default {
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.7);
-  animation: show-up .8s;
+  animation: show-up .5s;
 }
 .detalhes-view {
   display: flex;
@@ -154,11 +155,65 @@ h3 {
   margin-right: 1rem;
   padding: 0.3rem 1.5rem;
   border-radius: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
   color: #fff;
   font-size: 1.3rem;
 }
-.tipo {
-  background-color: #0a2e50;
+.bug {
+  background-color: var(--bug);
+}
+.dark {
+  background-color: var(--dark);
+}
+.dragon {
+  background-color: var(--dragon);
+}
+.fire {
+  background-color: var(--fire);
+}
+.flying {
+  background-color: var(--flying);
+}
+.water {
+  background-color: var(--water);
+}
+.grass {
+  background-color: var(--grass);
+}
+.poison {
+  background-color: var(--poison);
+}
+.normal {
+  background-color: var(--normal);
+}
+.ghost {
+  background-color: var(--ghost);
+}
+.psychic {
+  background-color: var(--psychic);
+}
+.ice {
+  background-color: var(--ice);
+}
+.fairy {
+  background-color: var(--fairy);
+}
+.fighting {
+  background-color: var(--fighting);
+}
+.ground {
+  background-color: var(--ground);
+}
+.rock {
+  background-color: var(--rock);
+}
+.electric {
+  background-color: var(--electric);
+}
+.steel {
+  background-color: var(--steel);
 }
 .habilidade {
   background-color: #c73015;

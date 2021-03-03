@@ -3,7 +3,6 @@
       <section class="pokemon" v-for="(pokemon, index) in pokemons" :key="'poke' + index" @click="puxarPokemon(pokemon.url)">
           <img class="pokeImg" :src="imgUrl + pokemon.id + '.png'" :alt="pokemon.name">
           <h3>{{pokemon.name}}</h3>
-          {{console.log(pokemon.url)}}
       </section>
       <div id="scrollAtivar" ref="infinitescrolltrigger"></div>
     </div>
@@ -20,13 +19,14 @@ export default {
   data() {
     return {
       pokemons: [],
+      pokemonsInnerSkills: [],
       puxarMaisPokemons: '',
       urlAtual: ''
     }
   },
   methods: {
     puxarDados() {
-      this.loading = true;
+      //this.loading = true;
       fetch(this.urlAtual)
       .then(r => {
         if(r.status === 200)
@@ -40,7 +40,7 @@ export default {
             return !!part
           }).pop();
           this.pokemons.push(pokemon);
-          this.loading = false;
+          //this.loading = false;
         })
       })
       .catch((error) => {
@@ -56,6 +56,7 @@ export default {
         });
       });
       observer.observe(this.$refs.infinitescrolltrigger);
+      console.log(this.$refs.infinitescrolltrigger)
     },
     next() {
       this.urlAtual = this.puxarMaisPokemons;

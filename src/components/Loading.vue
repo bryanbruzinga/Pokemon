@@ -1,5 +1,5 @@
 <template>
-  <div class="loading">
+  <div class="loading" v-if="!estaCarregado">
       <span></span>
       <span></span>
       <span></span>
@@ -9,7 +9,19 @@
 
 <script>
 export default {
-    name: "PaginaCarregando"
+    name: "Loading",
+    data() {
+        return {
+            estaCarregado: false
+        }
+    },
+    mounted() {
+        document.onreadystatechange = () => {
+            if(document.readyState == "complete") {
+                this.estaCarregado = true;
+            }
+        }
+    }
 }
 </script>
 

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <PokemonBusca/>
-    <Loading v-if="loading"/>
-    <PokemonLista :pokemonUrl="pokemonUrl" :loading="loading" :imgUrl="imgUrl" :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
+    <PokemonBusca :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
+    <Loading />
+    <PokemonLista :imgUrl="imgUrl" :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
     <PokemonDetalhes v-if="mostrarDetalhes" :pokemonUrl="pokemonUrl" :imgUrl="imgUrl" @fecharDetalhes="fecharDetalhes"/>
   </div>
 </template>
@@ -22,7 +22,6 @@ export default {
       apiUrl: 'https://pokeapi.co/api/v2/pokemon/',
       pokemonUrl: '',
       mostrarDetalhes: false,
-      loading: false
     }
   },
   components: {
@@ -46,5 +45,25 @@ export default {
 </script>
 
 <style>
+:root {
+  --normal: #B5B2AB;
+  --bug: #B6C64C;
+  --poison: #A5609A;
+  --psychic: #E864A5;
+  --grass: #84C964;
+  --ground: #DABF6D;
+  --ice: #8ADEFC;
+  --fire: #ED514A;
+  --rock: #C0B176;
+  --dragon: #8877EA;
+  --water: #4FA5FA;
+  --dark: #896A57;
+  --fighting: #B76055;
+  --ghost: #7774C0;
+  --steel: #B7B7C9;
+  --flying: #709EF2;
+  --electric: #F4D35C;
+  --fairy: #E6A5E7;
+}
 
 </style>

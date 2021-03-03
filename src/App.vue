@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import Pokemon from "@/components/Pokemon.vue"
 
 export default {
@@ -14,11 +13,9 @@ export default {
     Pokemon
   }
 }
-
 </script>
 
 <style>
-
 * {
   box-sizing: border-box;
   text-transform: capitalize;
@@ -49,5 +46,4 @@ img {
   width: 100px;
   display: block;
 }
-
 </style>
