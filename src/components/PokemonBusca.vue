@@ -23,7 +23,7 @@ export default {
   methods: {
     puxarPokemon() {
       if (this.pokemonBuscado !== '') {
-        this.$emit('puxarPokemon', this.apiUrl + this.pokemonBuscado);
+        this.$emit('puxarPokemon', this.apiUrl + this.pokemonBuscado.toLowerCase());
       }
     }
   },
