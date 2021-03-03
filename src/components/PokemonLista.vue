@@ -2,7 +2,7 @@
     <div class="container">
       <div class="listaPokemons">
         <section class="pokemon" v-for="(pokemon, index) in pokemons" :key="'poke' + index" @click="puxarPokemon(pokemon.url)">
-          <img class="pokeImg" :src="imgUrl + pokemon.id + '.png'" :alt="pokemon.name">
+          <img :src="imgUrl + pokemon.id + '.png'" :alt="pokemon.name">
           <span class="pokemonID"># {{pokemon.id}}</span>
           <h3>{{pokemon.name}}</h3>
         </section>
@@ -97,13 +97,12 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2rem;
+  margin: 1rem;
   cursor: pointer;
   box-shadow: 5px 5px 15px rgba(0,0,0, .5);
-  padding: 2rem;
+  padding: 1.5rem;
   background: rgba(255, 255, 255, .8);
   border-radius: 20px;
-  max-width: 250px;
   transition: all .5s;
 }
 
@@ -141,17 +140,25 @@ export default {
 }
 
 @media (max-width: 645px) {
-  .listaPokemons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .pokemon img {
+    height: 120px;
+    width: 120px;
   }
+  .pokemon h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
   .pokemon {
-    width: 100%;
+    margin: 1rem 0.5rem;
+  }
+  .listaPokemons {
+    grid-template-columns: 1fr 1fr;
   }
   .pokemon img {
-    height: 140px;
-    width: 140px;
+    height: 80px;
+    width: 80px;
   }
 }
 
