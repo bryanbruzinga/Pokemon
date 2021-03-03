@@ -1,9 +1,12 @@
 <template>
     <div class="container">
-      <section class="pokemon" v-for="(pokemon, index) in pokemons" :key="'poke' + index" @click="puxarPokemon(pokemon.url)">
+      <div class="listaPokemons">
+        <section class="pokemon" v-for="(pokemon, index) in pokemons" :key="'poke' + index" @click="puxarPokemon(pokemon.url)">
           <img class="pokeImg" :src="imgUrl + pokemon.id + '.png'" :alt="pokemon.name">
+          <span class="pokemonID"># {{pokemon.id}}</span>
           <h3>{{pokemon.name}}</h3>
-      </section>
+        </section>
+      </div>
       <div id="scrollAtivar" ref="infinitescrolltrigger"></div>
     </div>
 </template>
@@ -56,7 +59,6 @@ export default {
         });
       });
       observer.observe(this.$refs.infinitescrolltrigger);
-      console.log(this.$refs.infinitescrolltrigger)
     },
     next() {
       this.urlAtual = this.puxarMaisPokemons;
@@ -65,9 +67,6 @@ export default {
     puxarPokemon(url) {
       this.$emit('puxarPokemon', url);
     }
-  },
-  computed: {
-    console: () => console
   },
   created() {
     this.urlAtual = this.apiUrl;
@@ -82,9 +81,14 @@ export default {
 <style scoped>
 
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listaPokemons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  align-items: center;
   justify-content: center;
 }
 
@@ -107,6 +111,12 @@ export default {
   font-size: 1.7rem;
 }
 
+.pokemonID {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: grey;
+}
+
 .pokemon img {
   height: 180px;
   width: 180px;  
@@ -115,26 +125,26 @@ export default {
 }
 
 .pokemon:hover {
-  transform: scale(1.2);  
+  transform: scale(1.1);  
 }
 
 @media (max-width: 1250px) {
-  .container {
+  .listaPokemons {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 @media (max-width: 960px) {
-  .container {
+  .listaPokemons {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 645px) {
-  .container {
+  .listaPokemons {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
   }
   .pokemon {
     width: 100%;

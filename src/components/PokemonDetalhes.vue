@@ -1,6 +1,6 @@
 <template>
   <div class="detalhes">
-    <div class="detalhes-view" v-if="show">
+    <div class="verDetalhes" v-if="show">
       <div v-if="pokemon" class="imagem">
         <img :src="imgUrl + pokemon.id + '.png'" alt="pokemon.name" />
       </div>
@@ -92,17 +92,16 @@ export default {
   background: rgba(0, 0, 0, 0.7);
   animation: show-up .5s;
 }
-.detalhes-view {
+.verDetalhes {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   position: relative;
   width: 100%;
-  max-width: 500px;
-  padding: 50px 0 0;
-  background-color: #fff;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  max-width: 480px;
+  padding: 3rem 0 0 0;
+  background-color: #fafaf5;
 }
 
 .imagem {
@@ -122,7 +121,7 @@ export default {
 }
 
 h2 {
-  margin-bottom: 20px;
+  margin: 0.5rem 0;
 }
 .data {
   display: flex;
@@ -130,7 +129,7 @@ h2 {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 .propriedades {
   width: 90%;
@@ -138,30 +137,39 @@ h2 {
   border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 h3 {
-  width: 90%;
+  width: 100%;
   max-width: 400px;
   border-bottom: 1px solid #ccc;
 }
 .tipos,
 .habilidades {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
+  width: 90%;
   max-width: 400px;
+}
+.habilidades {
+  margin-bottom: 1rem;
 }
 .tipo,
 .habilidade {
-  margin-right: 1rem;
-  padding: 0.3rem 1.5rem;
-  border-radius: 20px;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
   text-align: center;
   display: flex;
   align-items: center;
   color: #fff;
   font-size: 1.3rem;
+}
+.tipo {
+  margin: 0 0.5rem;
+}
+.habilidade {
+  margin: 0.5rem;
 }
 .bug {
   background-color: var(--bug);
@@ -242,6 +250,12 @@ h3 {
     opacity: 0;
   } to {
     opacity: 1;
+  }
+}
+
+@media (max-width: 400px) {
+  h3 {
+    width: 90%;
   }
 }
 </style>

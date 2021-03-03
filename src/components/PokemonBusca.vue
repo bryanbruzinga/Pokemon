@@ -5,7 +5,7 @@
       <label for="busca">
         <button type="submit" @click="puxarPokemon">🔍</button>
       </label>
-      <input type="text" name="busca" placeholder="Busque um pokemon pelo nome" v-model="pokemonBuscado">      
+      <input type="text" placeholder="Busque um pokemon pelo nome ou código" v-model="pokemonBuscado">      
     </form>
 
   </div>
@@ -25,6 +25,11 @@ export default {
       if (this.pokemonBuscado !== '') {
         this.$emit('puxarPokemon', this.apiUrl + this.pokemonBuscado);
       }
+    }
+  },
+  watch: {
+    ativarBuscaFixa: function(value) {
+      this.$emit('aoScroll', value)
     }
   }
 }
@@ -67,7 +72,7 @@ img {
 
 .busca:hover {
   background: white;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 input {
@@ -88,6 +93,16 @@ input {
   }
   .busca {
     max-width: 350px;
+  }
+}
+
+@media (max-width: 400px) {
+  .busca {
+    max-width: 300px;    
+  }
+  .buscaFixa {
+    position: fixed;
+    top: 1rem;
   }
 }
 
