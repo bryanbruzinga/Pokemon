@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     puxarDados() {
-      //this.loading = true;
+      this.loading = true;
       fetch(this.urlAtual)
       .then(r => {
         if(r.status === 200)
@@ -43,7 +43,7 @@ export default {
             return !!part
           }).pop();
           this.pokemons.push(pokemon);
-          //this.loading = false;
+          this.loading = false;
         })
       })
       .catch((error) => {
