@@ -1,7 +1,7 @@
 <template>
   <div>
     <PokemonBusca :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
-    <Loading />
+    <Loading v-if="loading"/>
     <PokemonLista :imgUrl="imgUrl" :apiUrl="apiUrl" @puxarPokemon="puxarPokemon"/>
     <PokemonDetalhes v-if="mostrarDetalhes" :pokemonUrl="pokemonUrl" :imgUrl="imgUrl" @fecharDetalhes="fecharDetalhes"/>
   </div>

@@ -1,6 +1,7 @@
 <template>
-  <div class="detalhes">
-    <div class="verDetalhes" v-if="show">
+  <div class="detalhes" @click="handleModal">
+    <Loading v-if="loading" />
+    <div class="verDetalhes" v-else-if="show">
       <div v-if="pokemon" class="imagem">
         <img :src="imgUrl + pokemon.id + '.png'" alt="pokemon.name" />
       </div>
@@ -47,8 +48,13 @@
 </template>
 
 <script>
+import Loading from './Loading.vue'
+
 export default {
   props: ["pokemonUrl", "imgUrl"],
+  components: {
+    Loading
+  },
   data() {
     return {
       show: false,
@@ -59,11 +65,13 @@ export default {
     puxarDados() {
       fetch(this.pokemonUrl)
         .then((r) => {
+          this.$emit("loadingOn")
           if (r.status === 200) return r.json();
         })
         .then((data) => {
           this.pokemon = data;
           this.show = true;
+          this.$emit("loadingOff")
         })
         .catch((error) => {
           console.error(error);
@@ -72,6 +80,11 @@ export default {
     fecharDetalhes() {
       this.$emit("fecharDetalhes");
     },
+    handleModal({target, currentTarget}) {
+      if (target === currentTarget) {
+        this.fecharDetalhes()
+      }
+    }
   },
   created() {
     this.puxarDados();

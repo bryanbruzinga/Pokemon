@@ -13,6 +13,14 @@ export default {
     return {
       loading: false,
     };
+  },
+  methods: {
+     loadingOn() {
+      this.loading = true;
+    },
+    loadingOff() {
+      this.loading = false;
+    }
   }
 };
 </script>
